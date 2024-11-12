@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.postimg.cc/7PS1fBTg/HB.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        #poem-container {
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            padding-left: 30px;
+            max-width: 60%;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #FFD700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            animation: fadeInTitle 2s ease-in-out;
+        }
+
+        @keyframes fadeInTitle {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #poem {
+            font-size: 24px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        #poem p {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #image-container {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+        }
+
+        #image-container img {
+            width: 500px;
+            height: auto;
+            border: 10px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 流星效果 */
+        .meteor {
+            position: absolute;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.8), rgba(255,255,255,0));
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            animation: meteor 2s linear infinite;
+        }
+
+        @keyframes meteor {
+            0% {
+                transform: translate(-200px, -200px) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(800px, 800px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* 气球漂浮效果 */
+        .balloon {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* 调整气球位置和动画时间以显示多列效果 */
+        .balloon:nth-child(1) { left: 5%; animation-duration: 7s; }
+        .balloon:nth-child(2) { left: 15%; animation-duration: 8s; }
+        .balloon:nth-child(3) { left: 25%; animation-duration: 9s; }
+
+        .balloon:nth-child(5) { left: 45%; animation-duration: 11s; }
+        .balloon:nth-child(6) { left: 55%; animation-duration: 8s; }
+
+        .balloon:nth-child(8) { left: 75%; animation-duration: 10s; }
+
+        .balloon:nth-child(10) { left: 95%; animation-duration: 11s; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-800px); }
+        }
+
+        /* 左上角伪装播放按钮样式 - 完全透明背景 */
+        #fake-play-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #333;
+            background-color: transparent; /* 完全透明背景 */
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            box-shadow: none;
+            animation: fadeInButton 1s ease-in-out;
+        }
+
+        @keyframes fadeInButton {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div id="poem-container">
+        <h1>Happy Birthday</h1>
+        <div id="poem"></div>
+    </div>
+
+    <div id="image-container">
+        <img src="https://i.postimg.cc/C50qGgfb/dayi.jpg" alt="dayi">
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="background-audio" loop style="display:none;">
+        <source src="https://gitee.com/laujennery/music/raw/master/hpbd.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+
+    <!-- 左上角伪装的播放按钮 -->
+    <div id="fake-play-button">🎶</div>
+
+    <!-- 多列漂浮的气球 -->
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+    <img src="https://i.postimg.cc/BQDzZcJy/balloon.png" class="balloon" alt="balloon">
+
+    <script>
+        function showPoem() {
+            const poemLines = [
+                "但愿幸福常相随，",
+                "江山如画心似水，",
+                "红颜永驻笑常新。",
+                "大喜临门添福气，",
+                "美梦成真愿常宁。",
+                "女神光彩照四方，",
+                "生生世世笑常扬。",
+                "日出东方映福星，",
+                "快意人生乐无穷，",
+                "乐在心头常安宁。"
+            ];
+
+            let poemContainer = document.getElementById("poem");
+            poemLines.forEach((line, index) => {
+                let p = document.createElement("p");
+                p.innerText = line;
+                p.style.animationDelay = `${index * 0.5}s`;
+                poemContainer.appendChild(p);
+            });
+        }
+
+        // 页面加载后显示伪装按钮并等待用户点击
+        window.onload = function() {
+            const audio = document.getElementById("background-audio");
+            const fakePlayButton = document.getElementById("fake-play-button");
+
+            // 点击伪装按钮播放音频并隐藏按钮
+            fakePlayButton.addEventListener('click', () => {
+                audio.play().then(() => {
+                    fakePlayButton.style.display = "none"; // 播放成功后隐藏按钮
+                }).catch((error) => {
+                    console.log("播放失败:", error);
+                });
+            });
+
+            showPoem(); // 显示诗句
+            setInterval(createMeteor, 1000); // 开始流星效果
+        };
+
+        // 流星生成函数
+        function createMeteor() {
+            const meteor = document.createElement("div");
+            meteor.classList.add("meteor");
+
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight / 2;
+
+            meteor.style.left = `${startX}px`;
+            meteor.style.top = `${startY}px`;
+
+            document.body.appendChild(meteor);
+
+            setTimeout(() => {
+                meteor.remove();
+            }, 2000); // 和动画时间一致
+        }
+    </script>
+</body>
+</html>
